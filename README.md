@@ -12,6 +12,38 @@ To enable transfer learning across environments, all agents share a **standardiz
 
 ---
 
+## Environments
+
+This project uses three classic control environments from [OpenAI Gymnasium](https://gymnasium.farama.org/):
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="images/cartpole_env.gif" width="250" alt="CartPole-v1"/><br/>
+      <b>CartPole-v1</b>
+    </td>
+    <td align="center" width="33%">
+      <img src="images/acrobot_env.gif" width="250" alt="Acrobot-v1"/><br/>
+      <b>Acrobot-v1</b>
+    </td>
+    <td align="center" width="33%">
+      <img src="images/mountaincar_continuous_env.gif" width="250" alt="MountainCarContinuous-v0"/><br/>
+      <b>MountainCarContinuous-v0</b>
+    </td>
+  </tr>
+</table>
+
+| Property | CartPole-v1 | Acrobot-v1 | MountainCarContinuous-v0 |
+|----------|-------------|------------|--------------------------|
+| **Objective** | Balance a pole on a moving cart | Swing a double pendulum above a target height | Drive an underpowered car up a steep hill |
+| **State Space** | 4 (position, velocity, angle, angular velocity) | 6 (cos/sin of two joint angles + angular velocities) | 2 (position, velocity) |
+| **Action Space** | Discrete (2): push left/right | Discrete (3): torque left/none/right | Continuous (1): force ∈ [-1, 1] |
+| **Reward** | +1 per time step the pole stays upright | -1 per time step until goal is reached | +100 for reaching the goal, minus action cost |
+| **Max Steps** | 500 | 500 | 999 |
+| **Early Stop** | Avg reward > 475 over 100 episodes | Avg reward > -100 over 100 episodes | Avg reward > 50 over 100 episodes |
+
+---
+
 ## Project Structure
 
 ```
